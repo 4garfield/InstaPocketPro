@@ -1,6 +1,10 @@
 {
+  "beautify.tabSize": 2,
+  "editor.fontSize": 14,
   "editor.formatOnSave": true,
+  "editor.minimap.enabled": false,
   "editor.tabSize": 2,
+  "html.format.enable": true,
   "workbench.colorTheme": "One Monokai",
   "workbench.iconTheme": "material-icon-theme"
 }
