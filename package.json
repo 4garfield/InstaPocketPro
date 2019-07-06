@@ -1,11 +1,11 @@
 {
-  "name": "ng-pwa",
+  "name": "instapocketpro",
   "version": "0.0.0",
   "license": "MIT",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git@github.com:4garfield/ng-pwa.git"
+    "url": "git@github.com:4garfield/InstaPocketPro.git"
   },
   "scripts": {
     "ng": "ng",

@@ -13,7 +13,7 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule.withServerTransition({
-      appId: 'ng-pwa-app'
+      appId: 'instapocketpro-web-app'
     }),
     FlexLayoutModule,
     BrowserTransferStateModule,
