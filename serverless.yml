@@ -1,0 +1,26 @@
+service: instapocketpro-app
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  stage: production
+  region: us-west-1
+  environment:
+    NODE_ENV: production
+
+functions:
+  app:
+    handler: dist/server.handler
+    events:
+      - http:
+          path: /
+          method: get
+      - http:
+          path: "{proxy+}"
+          method: get
+
+package:
+  exclude:
+    - '**'
+  include:
+    - dist/**

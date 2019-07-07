@@ -7,17 +7,18 @@ import { enableProdMode } from '@angular/core';
 import * as express from 'express';
 import { join } from 'path';
 
+import * as awsServerlessExpress from 'aws-serverless-express';
+
 // Faster server renders w/ Prod mode (dev mode never needed)
 enableProdMode();
 
 // Express server
-const app = express();
+export const app = express();
 
-const PORT = process.env.PORT || 3000;
 const DIST_FOLDER = join(process.cwd(), 'dist');
 
 // * NOTE :: leave this as require() since this file is built Dynamically from webpack
-const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require('./dist/server/main.bundle');
+const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require('../dist/server/main.bundle');
 
 // Express Engine
 import { ngExpressEngine } from '@nguniversal/express-engine';
@@ -52,6 +53,7 @@ app.get('*', (req, res) => {
   res.render('index', {
     req: req,
     res: res,
+    providers: []
   });
 });
 
@@ -67,7 +69,7 @@ app.use(function (err, req, res, next) {
   res.json({ msg: err.message });
 });
 
-// Start up the Node server
-app.listen(PORT, () => {
-  console.log(`Node server listening on http://localhost:${PORT}`);
-});
+const server = awsServerlessExpress.createServer(app);
+
+export const handler = (event, context) =>
+  awsServerlessExpress.proxy(server, event, context);

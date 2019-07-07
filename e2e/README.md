@@ -1,5 +1,9 @@
 # E2E
 
+## WebDriver
+
+To manually update webdriver: `webdriver-manager update --versions.chrome 75.0.3770.90`.
+
 ## Protractor 6 Offline
 
 To use protractor 6 in offline mode, you can follow below steps:
