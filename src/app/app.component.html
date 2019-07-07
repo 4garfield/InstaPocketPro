@@ -1,7 +1,14 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-</div>
+<nav fxLayout="row wrap" fxLayoutAlign="start end" class="menu">
+  <div fxFlex>
+    <a mat-button routerLinkActive="router-link-active" routerLink="/home">InstaPocketPro</a>
+    <a mat-button routerLinkActive="router-link-active" routerLink="/showcase">ShowCase</a>
+  </div>
+  <div>
+    <a mat-button rel="noopener" target="_blank" href="https://github.com/4garfield/InstaPocketPro">
+      <img src="assets/images/github-circle-white-transparent.svg">
+      Github
+    </a>
+  </div>
+</nav>
 
+<router-outlet></router-outlet>
