@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { MetaService } from '../../services/meta.service';
 
 @Component({
   selector: 'app-home',
@@ -8,9 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() {
-  }
+  constructor(private metaService: MetaService) { }
 
   ngOnInit() {
+    this.metaService.setTitle('InstaPocketPro');
   }
 }

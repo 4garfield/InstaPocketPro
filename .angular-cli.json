@@ -10,7 +10,7 @@
     "outDir": "dist/browser",
     "assets": [
       "assets",
-      "favicon.ico"
+      "manifest.json"
     ],
     "index": "index.html",
     "main": "main.browser.ts",
