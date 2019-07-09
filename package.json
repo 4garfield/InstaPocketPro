@@ -13,7 +13,7 @@
     "serve": "npm run cleanDist && npm run build:ssr:browser && http-server dist/browser -p 8000",
     "cleanDist": "node ./scripts/cleanDist",
     "build:ssr": "npm run cleanDist && npm run build:ssr:browser && npm run build:ssr:server && npm run webpack:server",
-    "build:ssr:browser": "ng build --prod --app browser --vendor-chunk true --common-chunk true --output-hashing none --extract-licenses false",
+    "build:ssr:browser": "ng build --prod --app browser --vendor-chunk true --common-chunk true",
     "build:ssr:server": "ng build --prod --app server --output-hashing none --extract-licenses false",
     "webpack:server": "webpack --config ssr/webpack.server.config.js --progress --colors",
     "serve:ssr": "node dist/app.js",
