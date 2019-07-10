@@ -1,5 +1,7 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit, OnDestroy } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { SwUpdate } from '@angular/service-worker';
+import { Subscription } from 'rxjs/Subscription';
 
 import { PlatformService } from './services/platform.service';
 
@@ -8,14 +10,16 @@ import { PlatformService } from './services/platform.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
 
   promptEvent: any;
   showInstallButton = false;
   shouldInstall = true;
-  updateAvailable = false;
 
-  constructor(private platformService: PlatformService, private swUpdate: SwUpdate) { }
+  swUpdateSub: Subscription;
+  snackBarActionsub: Subscription;
+
+  constructor(private platformService: PlatformService, private swUpdate: SwUpdate, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     if (this.platformService.isBrowser()) {
@@ -23,11 +27,19 @@ export class AppComponent implements OnInit {
         this.promptEvent = event;
         this.showInstallButton = true;
       });
+
+      if (this.swUpdate.isEnabled) {
+        this.doUpdate();
+      }
     }
-    if (this.swUpdate.isEnabled) {
-      this.swUpdate.available.subscribe(() => {
-        this.updateAvailable = true;
-      });
+  }
+
+  ngOnDestroy() {
+    if (this.swUpdateSub) {
+      this.swUpdateSub.unsubscribe();
+    }
+    if (this.snackBarActionsub) {
+      this.snackBarActionsub.unsubscribe();
     }
   }
 
@@ -36,7 +48,6 @@ export class AppComponent implements OnInit {
     this.promptEvent.prompt();
     this.promptEvent.userChoice.then((choiceResult) => {
       if (choiceResult.outcome !== 'accepted') {
-        console.log('no');
         this.shouldInstall = false;
       }
       this.promptEvent = null;
@@ -44,9 +55,16 @@ export class AppComponent implements OnInit {
   }
 
   doUpdate() {
-    if (this.platformService.isBrowser()) {
-      window.location.reload();
-    }
+    this.swUpdateSub = this.swUpdate.available.subscribe(() => {
+      const snackBarRef = this.snackBar.open('There is updates avaliable', 'Update', {
+        duration: 60000,
+        horizontalPosition: 'left'
+      });
+
+      this.snackBarActionsub = snackBarRef.onAction().subscribe(() => {
+        window.location.reload();
+      });
+    });
   }
 
 }
