@@ -10,17 +10,18 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
+import { HomeComponent } from './modules/home/home.component';
 
 import { AppRoutingModule } from './app.routing.module';
 import { MaterialModule } from './material.module';
-import { HomeModule } from './modules/home/home.module';
 
 import { MetaService } from './services/meta.service';
 import { PlatformService } from './services/platform.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule.withServerTransition({
@@ -34,7 +35,6 @@ import { PlatformService } from './services/platform.service';
     MaterialModule,
     MobxAngularModule,
     AppRoutingModule,
-    HomeModule
   ],
   providers: [
     { provide: APP_BASE_HREF, useValue: '/' },

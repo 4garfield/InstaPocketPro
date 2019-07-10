@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { HomeComponent } from './modules/home/home.component';
+
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/home',
-    pathMatch: 'full',
+    component: HomeComponent,
   }, {
     path: 'showcase',
     loadChildren: './modules/showcase/showcase.module#ShowcaseModule'
