@@ -10,10 +10,13 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './modules/home/home.component';
+import { HomeComponent } from './home/home.component';
 
 import { AppRoutingModule } from './app.routing.module';
 import { MaterialModule } from './material.module';
+import { ListModule } from './modules/list/list.module';
+import { TodoModule } from './modules/todo/todo.module';
+import { CatModule } from './modules/cat/cat.module';
 
 import { MetaService } from './services/meta.service';
 import { PlatformService } from './services/platform.service';
@@ -35,6 +38,9 @@ import { PlatformService } from './services/platform.service';
     MaterialModule,
     MobxAngularModule,
     AppRoutingModule,
+    ListModule,
+    TodoModule,
+    CatModule
   ],
   providers: [
     { provide: APP_BASE_HREF, useValue: '/' },
