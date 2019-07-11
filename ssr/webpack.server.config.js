@@ -4,7 +4,7 @@ const webpack = require('webpack');
 module.exports = {
   entry: {
     server: path.join(__dirname, 'server.ts'),
-    app: path.join(__dirname, 'app.ts'),
+    local: path.join(__dirname, 'local.ts')
   },
   resolve: {
     extensions: ['.js', '.ts']
@@ -13,7 +13,7 @@ module.exports = {
   // do not include node_modules as protractor 6 is not supported now
   externals: [],
   output: {
-    path: path.join(__dirname, '../dist'),
+    path: path.join(__dirname, '../dist/server'),
     filename: '[name].js',
     library: '',
     libraryTarget: 'commonjs'

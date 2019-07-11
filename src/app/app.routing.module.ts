@@ -3,24 +3,10 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
 
-const routes: Routes = [
-  {
-    path: '',
-    component: HomeComponent,
-  }, {
-    path: 'list',
-    redirectTo: '/list',
-    pathMatch: 'full',
-  }, {
-    path: 'todo',
-    redirectTo: '/todo',
-    pathMatch: 'full',
-  }, {
-    path: 'cat',
-    redirectTo: '/cat',
-    pathMatch: 'full',
-  }
-];
+const routes: Routes = [{
+  path: '',
+  component: HomeComponent,
+}];
 
 @NgModule({
   imports: [

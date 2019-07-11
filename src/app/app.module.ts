@@ -6,9 +6,6 @@ import { APP_BASE_HREF } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MobxAngularModule } from 'mobx-angular';
 
-import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment';
-
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 
@@ -32,7 +29,6 @@ import { PlatformService } from './services/platform.service';
     }),
     BrowserAnimationsModule,
     BrowserTransferStateModule,
-    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
     HttpClientModule,
     FlexLayoutModule,
     MaterialModule,

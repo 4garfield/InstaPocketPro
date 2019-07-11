@@ -6,6 +6,7 @@ import { FlexLayoutServerModule } from '@angular/flex-layout/server';
 
 import { AppComponent } from './app.component';
 import { AppModule } from './app.module';
+import { ServiceWorkerMockModule } from './service-worker.mock.module';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -15,7 +16,8 @@ import { AppModule } from './app.module';
     ServerModule,
     ServerTransferStateModule,
     ModuleMapLoaderModule,
-    NoopAnimationsModule
+    NoopAnimationsModule,
+    ServiceWorkerMockModule
   ],
   providers: [
     // Add universal-only providers here

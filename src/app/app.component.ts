@@ -44,14 +44,16 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   installApp(): void {
-    this.showInstallButton = false;
-    this.promptEvent.prompt();
-    this.promptEvent.userChoice.then((choiceResult) => {
-      if (choiceResult.outcome !== 'accepted') {
-        this.shouldInstall = false;
-      }
-      this.promptEvent = null;
-    });
+    if (this.platformService.isBrowser()) {
+      this.showInstallButton = false;
+      this.promptEvent.prompt();
+      this.promptEvent.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome !== 'accepted') {
+          this.shouldInstall = false;
+        }
+        this.promptEvent = null;
+      });
+    }
   }
 
   doUpdate() {

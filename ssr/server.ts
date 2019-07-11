@@ -15,7 +15,7 @@ enableProdMode();
 // Express server
 export const app = express();
 
-const DIST_FOLDER = join(process.cwd(), 'dist');
+const DIST_FOLDER = process.env.DIST ? process.env.DIST : join(process.cwd(), 'dist');
 
 // * NOTE :: leave this as require() since this file is built Dynamically from webpack
 const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require('../dist/server/main.bundle');
@@ -41,13 +41,6 @@ function cacheControl(req, res, next) {
 }
 // Server static files
 app.get('*.*', cacheControl, express.static(join(DIST_FOLDER, 'browser'), { index: false }));
-
-// const api = new Api();
-// app.get('/api/json', (req, res) => {
-//   // console.time(`GET: ${req.originalUrl}`);
-//   res.json(api.getJson());
-//   // console.timeEnd(`GET: ${req.originalUrl}`);
-// });
 
 app.get('*', (req, res) => {
   res.render('index', {
