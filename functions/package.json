@@ -1,5 +1,5 @@
 {
-  "name": "ssr-functions",
+  "name": "functions",
   "scripts": {
     "serve": "firebase serve --only functions",
     "shell": "firebase functions:shell",

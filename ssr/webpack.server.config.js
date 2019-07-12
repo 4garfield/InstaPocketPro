@@ -13,7 +13,7 @@ module.exports = {
   // do not include node_modules as protractor 6 is not supported now
   externals: [],
   output: {
-    path: path.join(__dirname, '../dist/server'),
+    path: path.join(__dirname, '../dist'),
     filename: '[name].js',
     library: '',
     libraryTarget: 'commonjs'

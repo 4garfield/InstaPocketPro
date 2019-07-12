@@ -15,7 +15,7 @@ enableProdMode();
 // Express server
 export const app = express();
 
-const DIST_FOLDER = process.env.DIST ? process.env.DIST : join(process.cwd(), 'dist');
+const DIST_FOLDER = process.env.DIST ? process.env.DIST : join(process.cwd(), '.');
 
 // * NOTE :: leave this as require() since this file is built Dynamically from webpack
 const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require('../dist/server/main.bundle');
