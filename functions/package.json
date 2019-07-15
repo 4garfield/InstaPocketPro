@@ -1,10 +1,10 @@
 {
   "name": "functions",
   "scripts": {
-    "serve": "firebase serve --only functions",
+    "serve": "firebase serve --only functions:ssr",
     "shell": "firebase functions:shell",
     "start": "npm run shell",
-    "deploy": "firebase deploy --only functions",
+    "deploy": "firebase deploy --only functions:ssr",
     "logs": "firebase functions:log"
   },
   "engines": {

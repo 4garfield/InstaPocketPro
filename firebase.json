@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "instapocketpro",
     "public": "public",
     "ignore": [
       "firebase.json",
