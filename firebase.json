@@ -1,6 +1,6 @@
 {
-  "hosting": {
-    "site": "instapocketpro",
+  "hosting": [{
+    "target": "app",
     "public": "public",
     "ignore": [
       "firebase.json",
@@ -11,7 +11,19 @@
       "source": "**",
       "function": "ssr"
     }]
-  },
+  }, {
+    "target": "api",
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [{
+      "source": "**",
+      "function": "api"
+    }]
+  }],
   "functions": {
     "source": "functions"
   }

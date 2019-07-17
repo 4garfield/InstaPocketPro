@@ -1,5 +1,17 @@
 {
   "projects": {
     "default": "instapocketpro"
+  },
+  "targets": {
+    "instapocketpro": {
+      "hosting": {
+        "app": [
+          "instapocketpro"
+        ],
+        "api": [
+          "instapocketpro-api"
+        ]
+      }
+    }
   }
 }
