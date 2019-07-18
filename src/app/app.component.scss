@@ -1,11 +1,6 @@
-.menu {
-  background: #9c27b0;
-  color: #fff;
-  padding: 0.6rem;
-}
-
-.header-logo {
-  height: 26px;
-  margin: 0 4px 3px 0;
-  vertical-align: middle;
+app-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
 }

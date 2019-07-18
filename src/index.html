@@ -22,8 +22,7 @@
   <meta name="mobile-web-app-capable" content="yes">
   <!-- PWA -->
 
-  <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,400,500,700|Roboto&display=swap"
-    rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Mono:300">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 
@@ -37,7 +36,18 @@
   .loading-container {
     position: absolute;
     top: 25%;
-    left: 50%;
+  }
+
+  @media only screen and (min-width: 960px) {
+    .loading-container {
+      left: 50%;
+    }
+  }
+
+  @media only screen and (max-width: 959px) {
+    .loading-container {
+      left: 45%;
+    }
   }
 
   .lds-hourglass {
@@ -73,6 +83,25 @@
 
     100% {
       transform: rotate(1800deg);
+    }
+  }
+
+  app-root {
+    bottom: 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+  }
+
+  @media only screen and (min-width: 960px) {
+    app-root {
+      top: 56px;
+    }
+  }
+
+  @media only screen and (max-width: 959px) {
+    app-root {
+      top: 45px;
     }
   }
 

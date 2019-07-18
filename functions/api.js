@@ -11,13 +11,11 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
-const router = express.Router().get('/', function (req, res) {
+app.get('/api', function (req, res) {
   res.json({
     message: 'hello world!'
   });
 });
-
-app.use('/api', router);
 
 // catch 404
 app.use(function (req, res, next) {
