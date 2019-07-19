@@ -5,7 +5,22 @@
       <h2 class="mat-h2">Yet Another Web APP</h2>
     </div>
     <div class="header-contact">
-      <button mat-raised-button>Contact us</button>
+      <button mat-raised-button>Contact Us</button>
     </div>
   </div>
 </header>
+
+<div class="space"></div>
+<app-promo [content]="saveContent"></app-promo>
+<div class="space"></div>
+<app-promo [content]="fuelContent"></app-promo>
+<div class="space"></div>
+
+<section class="saving-section color-white">
+  <div fxLayout="column" fxLayoutAlign="center center" class="saving-section-inner">
+    <div class="saving-section-content">
+      <h4 class="mat-h1">Start to use.</h4>
+      <a mat-raised-button routerLinkActive="router-link-active" routerLink="/cat">Try Now!</a>
+    </div>
+  </div>
+</section>

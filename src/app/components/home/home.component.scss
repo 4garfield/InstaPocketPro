@@ -1,23 +1,51 @@
 .header-section {
   padding-top: 6rem;
-}
 
-.header-headline {
-  text-align: center;
+  .header-headline {
+    text-align: center;
 
-  h1 {
-    font-size: 56px;
-    font-weight: 300;
-    line-height: 56px;
-    margin: 15px 5px;
+    h1 {
+      font-size: 56px;
+      font-weight: 300;
+      line-height: 56px;
+      margin: 15px 5px;
+    }
+
+    h2 {
+      font-weight: 300;
+      margin: 15px 0 25px 0;
+    }
   }
 
-  h2 {
-    font-weight: 300;
-    margin: 15px 0 25px 0;
+  .header-contact {
+    margin: 3rem 0;
   }
+
 }
 
-.header-contact {
-  margin: 3rem 0;
+.space {
+  padding: 1rem 0;
+}
+
+.saving-section {
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(90deg, rgba(0, 0, 0, .4) 0, rgba(0, 0, 0, .4)), url(/assets/images/home/gardener.png);
+  background-position: top;
+  background-size: cover;
+  height: 330px;
+
+  @media only screen and (min-width: 959px) {
+    background-image: linear-gradient(90deg, rgba(0, 0, 0, .4) 0, rgba(0, 0, 0, .4)), url(/assets/images/home/gardener@2x.png);
+    height: 517px;
+  }
+
+  .saving-section-inner {
+    width: 100%;
+    height: 100%;
+  }
+
+  .saving-section-content {
+    text-align: center;
+  }
 }

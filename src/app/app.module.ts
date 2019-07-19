@@ -7,9 +7,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MobxAngularModule } from 'mobx-angular';
 
 import { AppComponent } from './app.component';
-import { MenuComponent } from './components/menu/menu.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { HomeComponent } from './components/home/home.component';
+import { ShareModule } from './components/share.module';
 
 import { AppRoutingModule } from './app.routing.module';
 import { MaterialModule } from './material.module';
@@ -21,10 +19,7 @@ import { PlatformService } from './services/platform.service';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    MenuComponent,
-    FooterComponent,
-    HomeComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule.withServerTransition({
@@ -37,6 +32,7 @@ import { PlatformService } from './services/platform.service';
     MaterialModule,
     MobxAngularModule,
     AppRoutingModule,
+    ShareModule,
     TodoModule,
     CatModule
   ],

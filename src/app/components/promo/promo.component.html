@@ -1,0 +1,12 @@
+<ng-container *ngIf="content">
+  <section [fxLayout.gt-sm]="content?.desktopLayout" fxLayoutAlign="center center" fxLayout.lt-md="column wrap"
+    fxLayoutGap="2rem" class="promo-section color-white">
+    <div fxFlex.gt-sm="50%" class="promo-section-desc">
+      <h2 class="mat-h1">{{content?.desc?.title}}</h2>
+      <p class="mat-body-1">{{content?.desc?.desc}}</p>
+    </div>
+    <div class="promo-section-img">
+      <img [srcset]="content?.img?.srcset" src="content?.img?.src">
+    </div>
+  </section>
+</ng-container>
