@@ -1,6 +1,6 @@
 {
   "name": "instapocketpro",
-  "version": "0.0.0",
+  "version": "5.0.0",
   "license": "MIT",
   "private": true,
   "repository": {
@@ -10,7 +10,6 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "serve": "npm run clean && npm run build:ssr:browser && http-server dist/browser -p 8000",
     "clean": "node ./scripts/clean",
     "copy": "node ./scripts/copy",
     "build:ssr": "npm run clean && npm run build:ssr:browser && npm run build:ssr:server && npm run webpack:server",
@@ -44,12 +43,15 @@
     "@nguniversal/common": "5.0.0",
     "@nguniversal/express-engine": "5.0.0",
     "@nguniversal/module-map-ngfactory-loader": "5.0.0",
+    "@types/lodash-es": "^4.17.3",
     "core-js": "2.6.9",
     "hammerjs": "2.0.8",
+    "lodash-es": "^4.17.15",
     "mobx": "4.12.0",
     "mobx-angular": "3.0.1",
     "mobx-utils": "4.0.1",
     "rxjs": "5.5.12",
+    "web-animations-js": "^2.3.2",
     "zone.js": "0.8.29"
   },
   "devDependencies": {
@@ -65,7 +67,6 @@
     "codelyzer": "4.5.0",
     "cucumber": "5.1.0",
     "fs-extra": "^8.1.0",
-    "http-server": "^0.11.1",
     "jasmine-core": "2.9.1",
     "jasmine-spec-reporter": "4.2.1",
     "karma": "4.1.0",
@@ -73,6 +74,7 @@
     "karma-coverage-istanbul-reporter": "2.0.5",
     "karma-htmlfile-reporter": "0.3.8",
     "karma-jasmine": "2.0.1",
+    "lodash": "^4.17.15",
     "protractor": "6.0.0",
     "protractor-cucumber-framework": "6.1.2",
     "ts-loader": "3.5.0",
