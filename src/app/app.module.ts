@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { APP_BASE_HREF } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { TransferHttpCacheModule } from '@nguniversal/common';
 import { MobxAngularModule } from 'mobx-angular';
 
 import { AppComponent } from './app.component';
@@ -28,6 +29,7 @@ import { PlatformService } from './services/platform.service';
     BrowserAnimationsModule,
     BrowserTransferStateModule,
     HttpClientModule,
+    TransferHttpCacheModule,
     FlexLayoutModule,
     MaterialModule,
     MobxAngularModule,

@@ -1,6 +1,5 @@
 const functions = require('firebase-functions');
 
-process.env.DIST = './';
 const app = require('./server').app;
 
 const api = require('./api').api;

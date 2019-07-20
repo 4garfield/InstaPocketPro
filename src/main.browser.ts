@@ -10,9 +10,6 @@ if (environment.production) {
 
 import 'hammerjs';
 
-// platformBrowserDynamic().bootstrapModule(AppBrowserModule)
-//   .catch(err => console.log(err));
-
 document.addEventListener('DOMContentLoaded', () => {
   platformBrowserDynamic().bootstrapModule(AppBrowserModule)
     .catch(err => console.log(err));
