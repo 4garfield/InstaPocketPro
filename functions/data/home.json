@@ -1,0 +1,32 @@
+{
+  "header": {
+    "title": "Insta Pocket Pro",
+    "subTitle": "Yet Another Web APP",
+    "contact": "Contact Us"
+  },
+  "promos": [{
+    "desktopLayout": "row wrap",
+    "text": {
+      "title": "Sprint from Zero to App",
+      "desc": "Hit the ground running with comprehensive, modern UI components that work across the web, mobile and desktop."
+    },
+    "img": {
+      "src": "assets/images/home/save-content.png",
+      "srcset": "assets/images/home/save-content.png, assets/images/home/save-content@2x.png 2x, assets/images/home/save-content@3x.png 3x"
+    }
+  }, {
+    "desktopLayout": "row-reverse wrap",
+    "text": {
+      "title": "Fast and Consistent",
+      "desc": "Finely tuned performance, because every millisecond counts. Fully tested across modern browsers."
+    },
+    "img": {
+      "src": "assets/images/home/fuel-your-mind.png",
+      "srcset": "assets/images/home/fuel-your-mind.png, assets/images/home/fuel-your-mind@2x.png 2x, assets/images/home/fuel-your-mind@3x.png 3x"
+    }
+  }],
+  "footer": {
+    "title": "Start to use.",
+    "try": "Try Now!"
+  }
+}

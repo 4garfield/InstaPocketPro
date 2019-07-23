@@ -1,26 +1,27 @@
 <header class="bg-theme color-white">
   <div fxLayout="column" fxLayoutAlign="center center" class="header-section">
     <div class="header-headline">
-      <h1 class="mat-display-3">Insta Pocket Pro</h1>
-      <h2 class="mat-h2">Yet Another Web APP</h2>
+      <h1 class="mat-display-3">{{content?.header.title}}</h1>
+      <h2 class="mat-h2">{{content?.header?.subTitle}}</h2>
     </div>
     <div class="header-contact">
-      <button mat-raised-button>Contact Us</button>
+      <button mat-raised-button>{{content?.header?.contact}}</button>
     </div>
   </div>
 </header>
 
-<div class="space"></div>
-<app-promo [content]="saveContent"></app-promo>
-<div class="space"></div>
-<app-promo [content]="fuelContent"></app-promo>
+<ng-container *ngFor="let promo of content.promos">
+  <div class="space"></div>
+  <app-promo [content]="promo"></app-promo>
+</ng-container>
+
 <div class="space"></div>
 
-<section class="saving-section color-white">
-  <div fxLayout="column" fxLayoutAlign="center center" class="saving-section-inner">
-    <div class="saving-section-content">
-      <h4 class="mat-h1">Start to use.</h4>
-      <a mat-raised-button routerLinkActive="router-link-active" routerLink="/cat">Try Now!</a>
+<section class="footer-section color-white">
+  <div fxLayout="column" fxLayoutAlign="center center" class="footer-section-inner">
+    <div class="footer-section-content">
+      <h4 class="mat-h1">{{content?.footer?.title}}</h4>
+      <a mat-raised-button routerLinkActive="router-link-active" routerLink="/cat">{{content?.footer?.try}}</a>
     </div>
   </div>
 </section>

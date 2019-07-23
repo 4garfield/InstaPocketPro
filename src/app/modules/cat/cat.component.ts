@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 import { MetaService } from '../../services/meta.service';
 
 @Component({
   selector: 'app-cat',
   templateUrl: './cat.component.html',
-  styleUrls: ['./cat.component.scss']
+  styleUrls: ['./cat.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CatComponent implements OnInit {
 

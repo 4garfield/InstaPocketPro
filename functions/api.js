@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
+var cors = require('cors');
 
 const app = express();
 
@@ -11,10 +12,26 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
-app.get('/api', function (req, res) {
-  res.json({
-    message: 'hello world!'
-  });
+let corsOpt;
+if (process.env.NODE_ENV === 'production') {
+  const whitelist = ['https://instapocketpro.web.app', 'instapocketpro.firebaseapp.com']
+  corsOpt = {
+    origin: function (origin, callback) {
+      if (whitelist.indexOf(origin) !== -1) {
+        callback(null, true)
+      } else {
+        callback(new Error('Not allowed by CORS'))
+      }
+    }
+  }
+} else {
+  corsOpt = {};
+}
+const corsOptions = corsOpt;
+
+const homeContent = require('./data/home.json')
+app.get('/home', cors(corsOptions), function (req, res) {
+  res.json(homeContent);
 });
 
 // catch 404

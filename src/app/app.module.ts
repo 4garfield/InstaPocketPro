@@ -6,6 +6,7 @@ import { APP_BASE_HREF } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { TransferHttpCacheModule } from '@nguniversal/common';
 import { MobxAngularModule } from 'mobx-angular';
+import { PrebootModule } from 'preboot';
 
 import { AppComponent } from './app.component';
 import { ShareModule } from './components/share.module';
@@ -17,6 +18,7 @@ import { CatModule } from './modules/cat/cat.module';
 
 import { MetaService } from './services/meta.service';
 import { PlatformService } from './services/platform.service';
+import { MobxModule } from './mobx/mobx.module';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,7 @@ import { PlatformService } from './services/platform.service';
     BrowserModule.withServerTransition({
       appId: 'instapocketpro-web-app'
     }),
+    PrebootModule.withConfig({ appRoot: 'app-root' }),
     BrowserAnimationsModule,
     BrowserTransferStateModule,
     HttpClientModule,
@@ -35,6 +38,7 @@ import { PlatformService } from './services/platform.service';
     MobxAngularModule,
     AppRoutingModule,
     ShareModule,
+    MobxModule,
     TodoModule,
     CatModule
   ],

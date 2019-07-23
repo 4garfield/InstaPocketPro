@@ -24,7 +24,7 @@
   padding: 1rem 0;
 }
 
-.saving-section {
+.footer-section {
   overflow: hidden;
   background-repeat: no-repeat;
   background-image: linear-gradient(90deg, rgba(0, 0, 0, .4) 0, rgba(0, 0, 0, .4)), url(/assets/images/home/gardener.png);
@@ -37,12 +37,12 @@
     height: 517px;
   }
 
-  .saving-section-inner {
+  .footer-section-inner {
     width: 100%;
     height: 100%;
   }
 
-  .saving-section-content {
+  .footer-section-content {
     text-align: center;
   }
 }
