@@ -6,7 +6,7 @@
       <p class="mat-body-1">{{content?.text?.desc}}</p>
     </div>
     <div class="promo-section-img">
-      <img [srcset]="content?.img?.srcset" src="content?.img?.src">
+      <img [alt]="content?.img?.alt" [srcset]="content?.img?.srcset" [src]="content?.img?.src">
     </div>
   </section>
 </ng-container>

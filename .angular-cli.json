@@ -10,7 +10,8 @@
     "outDir": "dist/browser",
     "assets": [
       "assets",
-      "manifest.json"
+      "manifest.json",
+      "robots.txt"
     ],
     "index": "index.html",
     "main": "main.browser.ts",

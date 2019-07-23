@@ -34,7 +34,7 @@ app.set('view engine', 'html');
 app.set('views', join(DIST_FOLDER, 'browser'));
 
 function cacheControl(req, res, next) {
-  res.header('Cache-Control', 'max-age=60');
+  res.header('Cache-Control', 'max-age=8640000');
   next();
 }
 // Server static files

@@ -14,5 +14,9 @@ export class TodoComponent implements OnInit {
 
   ngOnInit() {
     this.metaService.setTitle('Todo - InstaPocketPro');
+    this.metaService.addTag({
+      name: 'description',
+      content: 'try out todo at instapocketpro'
+    });
   }
 }

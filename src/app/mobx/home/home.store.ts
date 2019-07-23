@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { observable, action, computed } from 'mobx';
+import { observable, action, computed } from 'mobx-angular';
 
 import { HomeContent } from './home.model';
 import { HomeService } from './home.service';
@@ -8,7 +8,7 @@ import { HomeService } from './home.service';
 export class HomeStore {
 
   @observable
-  private homeContentState: HomeContent;
+  homeContentState: HomeContent;
 
   constructor(private homeService: HomeService) {
     this.getContent();
@@ -22,11 +22,6 @@ export class HomeStore {
         that.homeContentState = data;
       })
     );
-  }
-
-  @computed
-  get homeContent(): HomeContent {
-    return this.homeContentState;
   }
 
 }

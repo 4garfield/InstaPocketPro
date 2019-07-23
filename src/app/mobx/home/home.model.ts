@@ -12,6 +12,7 @@ export class HomePromo {
   };
   img: {
     src: string;
+    alt: string;
     srcset: string;
   };
 }
