@@ -9,6 +9,7 @@
     "root": "src",
     "outDir": "dist/browser",
     "assets": [
+      "favicon.ico",
       "assets",
       "manifest.json",
       "robots.txt"
