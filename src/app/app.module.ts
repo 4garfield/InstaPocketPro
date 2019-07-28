@@ -15,7 +15,6 @@ import { AppRoutingModule } from './app.routing.module';
 import { MaterialModule } from './material.module';
 import { MobxModule } from './mobx/mobx.module';
 import { TodoModule } from './modules/todo/todo.module';
-import { CatModule } from './modules/cat/cat.module';
 
 import { MetaService } from './services/meta.service';
 import { PlatformService } from './services/platform.service';
@@ -41,7 +40,6 @@ import { GtagService } from './services/gtag.service';
     ShareModule,
     MobxModule,
     TodoModule,
-    CatModule
   ],
   providers: [
     { provide: APP_BASE_HREF, useValue: '/' },
