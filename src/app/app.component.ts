@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit, OnDestroy } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SwUpdate } from '@angular/service-worker';
 import { Subscription } from 'rxjs/Subscription';
@@ -20,7 +21,19 @@ export class AppComponent implements OnInit, OnDestroy {
   swUpdateSub: Subscription;
   snackBarActionsub: Subscription;
 
-  constructor(private platformService: PlatformService, private swUpdate: SwUpdate, private snackBar: MatSnackBar) { }
+  constructor(
+    private platformService: PlatformService,
+    private swUpdate: SwUpdate,
+    private snackBar: MatSnackBar,
+    private router: Router) {
+    this.router.events.subscribe(event => {
+      if (this.platformService.isBrowser()) {
+        if (event instanceof NavigationEnd) {
+          (<any>window).gtag('config', 'UA-90263726-3', { 'page_path': event.urlAfterRedirects });
+        }
+      }
+    });
+  }
 
   ngOnInit() {
     if (this.platformService.isBrowser()) {

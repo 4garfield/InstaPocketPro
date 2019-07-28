@@ -5,7 +5,7 @@
       <h2 class="mat-h2">{{content?.header?.subTitle}}</h2>
     </div>
     <div class="header-contact">
-      <button mat-raised-button>{{content?.header?.contact}}</button>
+      <button mat-raised-button (click)="onContactClick()">{{content?.header?.contact}}</button>
     </div>
   </div>
 </header>
