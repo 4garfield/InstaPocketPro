@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { computed } from 'mobx-angular';
 
 import { MetaService } from '../../services/meta.service';
-import { PlatformService } from '../../services/platform.service';
+import { GtagService } from '../../services/gtag.service';
 import { HomeStore } from '../../mobx/home/home.store';
 import { HomeContent } from '../../mobx/home/home.model';
 
@@ -14,7 +14,10 @@ import { HomeContent } from '../../mobx/home/home.model';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private metaService: MetaService, private platformService: PlatformService, private store: HomeStore) {
+  constructor(
+    private metaService: MetaService,
+    private gtagService: GtagService,
+    private store: HomeStore) {
   }
 
   ngOnInit() {
@@ -31,12 +34,10 @@ export class HomeComponent implements OnInit {
   }
 
   onContactClick() {
-    if (this.platformService.isBrowser()) {
-      (<any>window).gtag('event', 'click', {
-        'event_category': 'button',
-        'event_label': 'Click Contact Us'
-      });
-    }
+    this.gtagService.push('event', 'button', {
+      'event_category': 'click',
+      'event_label': 'Click contact us button'
+    });
   }
 
 }

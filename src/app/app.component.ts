@@ -5,6 +5,7 @@ import { SwUpdate } from '@angular/service-worker';
 import { Subscription } from 'rxjs/Subscription';
 
 import { PlatformService } from './services/platform.service';
+import { GtagService } from './services/gtag.service';
 
 @Component({
   selector: 'app-root',
@@ -23,14 +24,13 @@ export class AppComponent implements OnInit, OnDestroy {
 
   constructor(
     private platformService: PlatformService,
+    private gtagService: GtagService,
     private swUpdate: SwUpdate,
     private snackBar: MatSnackBar,
     private router: Router) {
     this.router.events.subscribe(event => {
-      if (this.platformService.isBrowser()) {
-        if (event instanceof NavigationEnd) {
-          (<any>window).gtag('config', 'UA-90263726-3', { 'page_path': event.urlAfterRedirects });
-        }
+      if (event instanceof NavigationEnd) {
+        this.gtagService.push('config', 'UA-90263726-3', { 'page_path': event.urlAfterRedirects });
       }
     });
   }
