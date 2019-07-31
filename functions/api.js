@@ -29,6 +29,12 @@ if (process.env.NODE_ENV === 'production') {
 }
 const corsOptions = corsOpt;
 
+app.get('/', cors(), function (req, res) {
+  res.json({
+    msg: 'hello'
+  });
+});
+
 const homeContent = require('./data/home.json')
 app.get('/home', cors(corsOptions), function (req, res) {
   res.json(homeContent);
