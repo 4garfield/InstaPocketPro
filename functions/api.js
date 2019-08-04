@@ -1,7 +1,9 @@
 const express = require('express');
+var _ = require('lodash');
+const config = require('config');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
-var cors = require('cors');
+const cors = require('cors');
 
 const app = express();
 
@@ -12,22 +14,9 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
-let corsOpt;
-if (process.env.NODE_ENV === 'production') {
-  const whitelist = ['https://instapocketpro.web.app', 'instapocketpro.firebaseapp.com']
-  corsOpt = {
-    origin: function (origin, callback) {
-      if (whitelist.indexOf(origin) !== -1) {
-        callback(null, true)
-      } else {
-        callback(new Error('Not allowed by CORS'))
-      }
-    }
-  }
-} else {
-  corsOpt = {};
-}
-const corsOptions = corsOpt;
+app.set('etag', 'strong');
+
+const corsOptions = config.get('cors');
 
 app.get('/', cors(), function (req, res) {
   res.json({

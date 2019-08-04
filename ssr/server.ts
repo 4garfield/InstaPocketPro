@@ -4,14 +4,23 @@ import 'reflect-metadata';
 
 import { enableProdMode } from '@angular/core';
 
-import * as express from 'express';
 import { join } from 'path';
+import * as fs from 'fs-extra';
+import * as express from 'express';
+import * as helmet from 'helmet';
+import * as compression from 'compression';
+// import * as etag from 'etag';
 
 // Faster server renders w/ Prod mode (dev mode never needed)
 enableProdMode();
 
 // Express server
 export const app = express();
+
+app.use(helmet());
+app.use(compression());
+
+app.set('etag', 'strong');
 
 const DIST_FOLDER = join(process.cwd(), '.');
 
@@ -35,12 +44,20 @@ app.set('views', join(DIST_FOLDER, 'browser'));
 
 function cacheControl(req, res, next) {
   res.header('Cache-Control', 'max-age=8640000');
+  res.header('Vary', 'Origin, User-Agent');
   next();
 }
+const staticOptions = {
+  index: false,
+  // etag: false,
+  // setHeaders: (res, path) => {
+  //   res.header('ETag', etag(fs.readFileSync(path), { weak: false }));
+  // }
+};
 // Server static files
-app.get('*.*', cacheControl, express.static(join(DIST_FOLDER, 'browser'), { index: false }));
+app.get('*.*', cacheControl, express.static(join(DIST_FOLDER, 'browser'), staticOptions));
 
-app.get('*', (req, res) => {
+app.get('*', cacheControl, (req, res) => {
   res.render('index', {
     req: req,
     res: res,

@@ -1,0 +1,5 @@
+{
+  "cors": {
+    "origin": ["https://instapocketpro.web.app", "https://instapocketpro.firebaseapp.com"]
+  }
+}
