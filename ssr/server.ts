@@ -8,7 +8,8 @@ import { join } from 'path';
 import * as fs from 'fs-extra';
 import * as express from 'express';
 import * as helmet from 'helmet';
-import * as compression from 'compression';
+// import * as compression from 'compression';
+import * as shrinkRay from 'shrink-ray-current';
 // import * as etag from 'etag';
 
 // Faster server renders w/ Prod mode (dev mode never needed)
@@ -18,7 +19,8 @@ enableProdMode();
 export const app = express();
 
 app.use(helmet());
-app.use(compression());
+// app.use(compression());
+app.use(shrinkRay());
 
 app.set('etag', 'strong');
 
