@@ -5,6 +5,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule } from '@angular/material/button';
 import { MobxAngularModule } from 'mobx-angular';
 
+import { CookieBarComponent } from './cookie-bar/cookie-bar.component';
 import { MenuComponent } from './menu/menu.component';
 import { FooterComponent } from './footer/footer.component';
 import { PromoComponent } from './promo/promo.component';
@@ -12,6 +13,7 @@ import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
+    CookieBarComponent,
     MenuComponent,
     FooterComponent,
     PromoComponent,
@@ -25,6 +27,7 @@ import { HomeComponent } from './home/home.component';
     MobxAngularModule,
   ],
   exports: [
+    CookieBarComponent,
     MenuComponent,
     FooterComponent,
     PromoComponent

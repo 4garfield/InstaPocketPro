@@ -7,6 +7,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { TransferHttpCacheModule } from '@nguniversal/common';
 import { MobxAngularModule } from 'mobx-angular';
 import { PrebootModule } from 'preboot';
+import { CookieService } from 'ngx-cookie-service';
 
 import { AppComponent } from './app.component';
 import { ShareModule } from './components/share.module';
@@ -46,6 +47,7 @@ import { GtagService } from './services/gtag.service';
     MetaService,
     PlatformService,
     GtagService,
+    CookieService,
   ],
   exports: [AppComponent]
 })
