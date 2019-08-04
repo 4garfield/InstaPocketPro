@@ -8,9 +8,7 @@ import { join } from 'path';
 import * as fs from 'fs-extra';
 import * as express from 'express';
 import * as helmet from 'helmet';
-// import * as compression from 'compression';
-import * as shrinkRay from 'shrink-ray-current';
-// import * as etag from 'etag';
+import * as compression from 'compression';
 
 // Faster server renders w/ Prod mode (dev mode never needed)
 enableProdMode();
@@ -19,8 +17,7 @@ enableProdMode();
 export const app = express();
 
 app.use(helmet());
-// app.use(compression());
-app.use(shrinkRay());
+app.use(compression());
 
 app.set('etag', 'strong');
 
@@ -51,10 +48,6 @@ function cacheControl(req, res, next) {
 }
 const staticOptions = {
   index: false,
-  // etag: false,
-  // setHeaders: (res, path) => {
-  //   res.header('ETag', etag(fs.readFileSync(path), { weak: false }));
-  // }
 };
 // Server static files
 app.get('*.*', cacheControl, express.static(join(DIST_FOLDER, 'browser'), staticOptions));

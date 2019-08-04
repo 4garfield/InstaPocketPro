@@ -1,13 +1,14 @@
 const express = require('express');
 var _ = require('lodash');
-const config = require('config');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
 const cors = require('cors');
+const compression = require('compression');
 
 const app = express();
 
 app.use(helmet());
+app.use(compression());
 
 app.use(bodyParser.urlencoded({
   extended: true
@@ -16,7 +17,13 @@ app.use(bodyParser.json());
 
 app.set('etag', 'strong');
 
-const corsOptions = config.get('cors');
+let config;
+if (process.env.NODE_ENV === 'production') {
+  config = require('./config/production.json');
+} else {
+  config = require('./config/default.json');
+}
+const corsOptions = config['cors'];
 
 app.get('/', cors(), function (req, res) {
   res.json({
