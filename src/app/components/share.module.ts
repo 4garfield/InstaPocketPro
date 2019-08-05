@@ -7,16 +7,22 @@ import { MobxAngularModule } from 'mobx-angular';
 
 import { CookieBarComponent } from './cookie-bar/cookie-bar.component';
 import { MenuComponent } from './menu/menu.component';
+import { InstallComponent } from './install/install.component';
 import { FooterComponent } from './footer/footer.component';
 import { PromoComponent } from './promo/promo.component';
 import { HomeComponent } from './home/home.component';
 
+const components = [
+  CookieBarComponent,
+  MenuComponent,
+  InstallComponent,
+  FooterComponent,
+  PromoComponent
+];
+
 @NgModule({
   declarations: [
-    CookieBarComponent,
-    MenuComponent,
-    FooterComponent,
-    PromoComponent,
+    ...components,
     HomeComponent
   ],
   imports: [
@@ -27,10 +33,7 @@ import { HomeComponent } from './home/home.component';
     MobxAngularModule,
   ],
   exports: [
-    CookieBarComponent,
-    MenuComponent,
-    FooterComponent,
-    PromoComponent
+    ...components
   ],
   providers: []
 })

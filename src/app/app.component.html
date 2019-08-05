@@ -2,9 +2,6 @@
 
 <router-outlet></router-outlet>
 
-<button mat-button *ngIf="showInstallButton && shouldInstall" (click)="installApp()">
-  Install
-</button>
-
+<app-install *ngIf="showInstallButton && shouldInstall" (installClicked)="installApp()"></app-install>
 <app-footer></app-footer>
 <app-cookie-bar></app-cookie-bar>

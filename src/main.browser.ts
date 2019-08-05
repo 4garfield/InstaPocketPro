@@ -8,9 +8,7 @@ if (environment.production) {
   enableProdMode();
 }
 
-(async () => {
-  await import('hammerjs');
-})();
+import 'hammerjs';
 
 document.addEventListener('DOMContentLoaded', () => {
   platformBrowserDynamic().bootstrapModule(AppBrowserModule)
