@@ -17,10 +17,11 @@ export class AppComponent implements OnInit, OnDestroy {
 
   promptEvent: any;
   showInstallButton = false;
-  shouldInstall = true;
 
   swUpdateSub: Subscription;
   snackBarActionsub: Subscription;
+
+  addToHomeKey = 'web.app.instapocketpro.addToHome';
 
   constructor(
     private platformService: PlatformService,
@@ -38,6 +39,8 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnInit() {
     if (this.platformService.isBrowser()) {
       window.addEventListener('beforeinstallprompt', event => {
+        // Prevent Chrome 76 and later from showing the mini-infobar
+        event.preventDefault();
         this.promptEvent = event;
         this.showInstallButton = true;
       });
@@ -57,15 +60,34 @@ export class AppComponent implements OnInit, OnDestroy {
     }
   }
 
+  shouldInstall() {
+    if (this.platformService.isBrowser()) {
+      const addToHomeVal = window.localStorage.getItem(this.addToHomeKey);
+      if (addToHomeVal && JSON.parse(addToHomeVal)) {
+        const addToHomeValObj = JSON.parse(addToHomeVal);
+        if (addToHomeValObj.added) {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+
   installApp(): void {
     if (this.platformService.isBrowser()) {
       this.showInstallButton = false;
       this.promptEvent.prompt();
       this.promptEvent.userChoice.then((choiceResult) => {
+        const addToHomeVal = {
+          added: true,
+          lastDisplayTime: new Date().getTime()
+        };
         if (choiceResult.outcome !== 'accepted') {
-          this.shouldInstall = false;
+          addToHomeVal.added = false;
         }
         this.promptEvent = null;
+
+        window.localStorage.setItem(this.addToHomeKey, JSON.stringify(addToHomeVal));
       });
     }
   }
