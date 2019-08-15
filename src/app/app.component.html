@@ -2,6 +2,6 @@
 
 <router-outlet></router-outlet>
 
-<app-install *ngIf="showInstallButton && shouldInstall()" (installClicked)="installApp()"></app-install>
+<app-install *ngIf="showInstallButton && checkInstallation()" (installClicked)="installApp()"></app-install>
 <app-footer></app-footer>
 <app-cookie-bar></app-cookie-bar>

@@ -7,6 +7,14 @@ import { Subscription } from 'rxjs/Subscription';
 import { PlatformService } from './services/platform.service';
 import { GtagService } from './services/gtag.service';
 
+import isEmpty from 'lodash-es/isEmpty';
+import now from 'lodash-es/now';
+
+interface AppInstalled {
+  added: boolean;
+  lastDisplayTime: number;
+}
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -21,7 +29,7 @@ export class AppComponent implements OnInit, OnDestroy {
   swUpdateSub: Subscription;
   snackBarActionsub: Subscription;
 
-  addToHomeKey = 'web.app.instapocketpro.addToHome';
+  addToHomeKey = 'web.app.instapocketpro.installed';
 
   constructor(
     private platformService: PlatformService,
@@ -38,11 +46,15 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     if (this.platformService.isBrowser()) {
-      window.addEventListener('beforeinstallprompt', event => {
+      this.checkInstallation();
+      window.addEventListener('beforeinstallprompt', (event) => {
         // Prevent Chrome 76 and later from showing the mini-infobar
         event.preventDefault();
         this.promptEvent = event;
         this.showInstallButton = true;
+      });
+      window.addEventListener('appinstalled', (event) => {
+        this.updateAppInstalled(true);
       });
 
       if (this.swUpdate.isEnabled) {
@@ -60,17 +72,25 @@ export class AppComponent implements OnInit, OnDestroy {
     }
   }
 
-  shouldInstall() {
+  checkInstallation() {
     if (this.platformService.isBrowser()) {
-      const addToHomeVal = window.localStorage.getItem(this.addToHomeKey);
-      if (addToHomeVal && JSON.parse(addToHomeVal)) {
-        const addToHomeValObj = JSON.parse(addToHomeVal);
-        if (addToHomeValObj.added) {
-          return false;
+      // detecting if app is launched from the home screen
+      if (window.matchMedia('(display-mode: standalone)').matches || window.navigator['standalone'] === true) {
+        return false;
+      } else {
+        const appInstalled = window.localStorage.getItem(this.addToHomeKey);
+        if (!isEmpty(appInstalled)) {
+          const appInstalledObj: AppInstalled = JSON.parse(appInstalled);
+          if (appInstalledObj.added) {
+            return false;
+          } else if (now() - appInstalledObj.lastDisplayTime < (1000 * 60 * 60 * 24 * 30)) {
+            return false;
+          }
         }
       }
+      return true;
+
     }
-    return true;
   }
 
   installApp(): void {
@@ -78,18 +98,22 @@ export class AppComponent implements OnInit, OnDestroy {
       this.showInstallButton = false;
       this.promptEvent.prompt();
       this.promptEvent.userChoice.then((choiceResult) => {
-        const addToHomeVal = {
-          added: true,
-          lastDisplayTime: new Date().getTime()
-        };
+
         if (choiceResult.outcome !== 'accepted') {
-          addToHomeVal.added = false;
+          this.updateAppInstalled(false);
         }
         this.promptEvent = null;
 
-        window.localStorage.setItem(this.addToHomeKey, JSON.stringify(addToHomeVal));
       });
     }
+  }
+
+  private updateAppInstalled(added: boolean) {
+    const appInstalled: AppInstalled = {
+      added: added,
+      lastDisplayTime: now()
+    };
+    window.localStorage.setItem(this.addToHomeKey, JSON.stringify(appInstalled));
   }
 
   doUpdate() {
