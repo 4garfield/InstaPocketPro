@@ -6,7 +6,6 @@ import { APP_BASE_HREF } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { TransferHttpCacheModule } from '@nguniversal/common';
 import { MobxAngularModule } from 'mobx-angular';
-import { PrebootModule } from 'preboot';
 import { CookieService } from 'ngx-cookie-service';
 
 import { AppComponent } from './app.component';
@@ -29,7 +28,8 @@ import { GtagService } from './services/gtag.service';
     BrowserModule.withServerTransition({
       appId: 'instapocketpro-web-app'
     }),
-    PrebootModule.withConfig({ appRoot: 'app-root' }),
+    // remove preboot due: https://github.com/angular/angular/issues/32855
+    // PrebootModule.withConfig({ appRoot: 'app-root' }),
     BrowserAnimationsModule,
     BrowserTransferStateModule,
     HttpClientModule,

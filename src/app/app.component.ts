@@ -81,9 +81,7 @@ export class AppComponent implements OnInit, OnDestroy {
         const appInstalled = window.localStorage.getItem(this.addToHomeKey);
         if (!isEmpty(appInstalled)) {
           const appInstalledObj: AppInstalled = JSON.parse(appInstalled);
-          if (appInstalledObj.added) {
-            return false;
-          } else if (now() - appInstalledObj.lastDisplayTime < (1000 * 60 * 60 * 24 * 30)) {
+          if (appInstalledObj.added || now() - appInstalledObj.lastDisplayTime < (1000 * 60 * 60 * 24 * 30)) {
             return false;
           }
         }
